@@ -27,7 +27,7 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    diff: {
+    uniquestyles: {
       paths: [
           path.join(__dirname, "../../public/vendor/nova/app.css"),
       ]
