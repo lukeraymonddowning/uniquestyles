@@ -4,42 +4,33 @@
 
 [PostCSS]: https://github.com/postcss/postcss
 
-```css
-.foo {
-  /* Input example */
-}
-```
+## Introduction
 
-```css
-.foo {
-  /* Output example */
-}
-```
+This plugin is primarily intended to be used inside Laravel Nova to strip out Tailwind selectors in your custom field/card/tool css file that are already defined in the Nova stylesheet.
+This ensures that your custom css file is as small as possible and doesn't cause style conflicts with Nova.
 
-## Usage
+## Configuration
 
-**Step 1:** Install plugin:
+You should configure this plugin by passing CSS files you want to compare against to the `paths` option:
 
-```sh
-npm install --save-dev postcss postcss-diff
-```
+```js
+// postcss.config.js
+const path = require("path");
 
-**Step 2:** Check you project for existed PostCSS config: `postcss.config.js`
-in the project root, `"postcss"` section in `package.json`
-or `postcss` in bundle config.
-
-If you do not use PostCSS, add it according to [official docs]
-and set this plugin in settings.
-
-**Step 3:** Add the plugin to plugins list:
-
-```diff
 module.exports = {
-  plugins: [
-+   require('postcss-diff'),
-    require('autoprefixer')
-  ]
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+    prune: {
+      paths: [
+          path.join(__dirname, "../../public/vendor/nova/app.css"),
+      ]
+    },
+  }
 }
 ```
 
-[official docs]: https://github.com/postcss/postcss#usage
+## Attribution
+
+This plugin was created for the Laravel Nova Mastery 2023 course and is pretty much verbatim from [work done by Aaron Francis](https://twitter.com/aarondfrancis/status/1636438221558038569?s=20).
+All credit goes to him for the idea and implementation.
