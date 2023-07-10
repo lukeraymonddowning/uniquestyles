@@ -1,4 +1,4 @@
-# postcss-diff
+# uniquestyles
 
 [PostCSS] plugin that strips selectors found in other stylesheets..
 
