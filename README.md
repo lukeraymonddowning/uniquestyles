@@ -4,6 +4,12 @@
 
 [PostCSS]: https://github.com/postcss/postcss
 
+## Installation
+
+```bash
+npm install -D uniquestyles
+```
+
 ## Introduction
 
 This plugin is primarily intended to be used inside Laravel Nova to strip out Tailwind selectors in your custom field/card/tool css file that are already defined in the Nova stylesheet.
