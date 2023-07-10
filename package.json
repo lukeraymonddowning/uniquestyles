@@ -1,6 +1,6 @@
 {
-  "name": "postcss-diff",
-  "version": "0.2.0",
+  "name": "uniquestyles",
+  "version": "0.0.0",
   "description": "PostCSS plugin that strips selectors found in other stylesheets.",
   "keywords": ["postcss", "css", "postcss-plugin", "postcss-diff"],
   "scripts": {

@@ -15,7 +15,7 @@ module.exports = (opts = {}) => {
   });
 
   return {
-    postcssPlugin: 'diff',
+    postcssPlugin: 'uniquestyles',
 
     Rule(rule) {
       if (
