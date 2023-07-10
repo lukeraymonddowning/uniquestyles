@@ -15,7 +15,7 @@ module.exports = (opts = {}) => {
   });
 
   return {
-    postcssPlugin: 'prune',
+    postcssPlugin: 'diff',
 
     Rule(rule) {
       if (
