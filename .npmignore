@@ -8,3 +8,4 @@ yarn.lock
 .github
 .editorconfig
 coverage/
+fixtures/
