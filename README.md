@@ -1,14 +1,8 @@
-# stylediff
+# uniquestyles
 
 [PostCSS] plugin that strips selectors found in other stylesheets..
 
 [PostCSS]: https://github.com/postcss/postcss
-
-## Installation
-
-```bash
-npm install -D uniquestyles
-```
 
 ## Introduction
 
@@ -27,7 +21,7 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    uniquestyles: {
+    diff: {
       paths: [
           path.join(__dirname, "../../public/vendor/nova/app.css"),
       ]
