@@ -12,3 +12,7 @@ async function run (input, output, opts = { }) {
 it('removes duplicate selectors', async () => {
   await run ('.test {} .keep {} .test-2 {}', '.keep {}', { paths: [ path.join(__dirname, 'fixtures/base.css') ] })
 });
+
+it('can compensate for different ordering across stylesheets', async () => {
+  await run ('h1, h2, h3 {}', '', { paths: [ path.join(__dirname, 'fixtures/specificity.css') ] })
+});

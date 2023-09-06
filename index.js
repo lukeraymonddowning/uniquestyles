@@ -10,7 +10,7 @@ module.exports = (opts = {}) => {
 
   stylesheetsToDiff.forEach(path => {
     postcss.parse(fs.readFileSync(path)).walkRules(rule => {
-      selectors.add(rule.selector)
+      selectors.add(normalizeSelectors(rule))
     })
   });
 
@@ -18,9 +18,11 @@ module.exports = (opts = {}) => {
     postcssPlugin: 'uniquestyles',
 
     Rule(rule) {
+      const selector = normalizeSelectors(rule)
+
       if (
-        selectors.has(rule.selector) ||
-        selectors.has(`[dir=ltr] ${rule.selector}`)
+        selectors.has(selector) ||
+        selectors.has(`[dir=ltr] ${selector}`)
       ) {
         rule.remove()
       }
@@ -29,3 +31,16 @@ module.exports = (opts = {}) => {
 }
 
 module.exports.postcss = true
+
+function normalizeSelectors(rule) {
+  const selectors = Array.from(new Set([...rule.selectors]))
+  selectors.sort()
+
+  return selectors
+    .map(selector => selector
+      .replace(/'/g, '"')
+      .replace(/::(before|after)/g, ':$1')
+      .replace(/\[(.+)=['"]?([a-zA-Z_-]+?)['"]?\]/g, '[$1=$2]')
+    )
+    .join(', ')
+}
