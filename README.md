@@ -1,6 +1,6 @@
 # uniquestyles
 
-[PostCSS] plugin that strips selectors found in other stylesheets..
+[PostCSS] plugin that strips selectors found in other stylesheets.
 
 [PostCSS]: https://github.com/postcss/postcss
 
