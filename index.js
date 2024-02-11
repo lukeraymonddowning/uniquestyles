@@ -37,7 +37,7 @@ function normalizeSelectors(rule) {
   selectors.sort()
 
   return selectors
-    .map(selector => selector
+      .map(selector => (rule.parent.type === 'atrule' ? `@${rule.parent.name}.${rule.parent.params}.${selector}` : selector)
       .replace(/'/g, '"')
       .replace(/::(before|after)/g, ':$1')
       .replace(/\[(.+)=['"]?([a-zA-Z_-]+?)['"]?\]/g, '[$1=$2]')
