@@ -16,3 +16,7 @@ it('removes duplicate selectors', async () => {
 it('can compensate for different ordering across stylesheets', async () => {
   await run ('h1, h2, h3 {}', '', { paths: [ path.join(__dirname, 'fixtures/specificity.css') ] })
 });
+
+it('does not remove @ styles', async () => {
+  await run ('@keyframes pulse { from { opacity: 0; }}', '@keyframes pulse { from { opacity: 0; }}')
+});
